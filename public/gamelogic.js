@@ -150,7 +150,7 @@ var startUp = document.getElementById('startButton');
 
 startUp.addEventListener('click', function(){
     socket.emit('makeGame');
-    console.log('made a game');
+    console.log('Game created');
 });
 
 
