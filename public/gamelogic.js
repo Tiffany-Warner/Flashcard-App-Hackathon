@@ -121,7 +121,15 @@ socket.on('user left', function (data) {
 });
 
 
-
+// game created
+socket.on('gameCreated', function(data){
+   
+   console.log('game created');
+   
+   document.getElementById('startButton').style.display = 'none';
+   
+    
+});
 
 
 
@@ -137,7 +145,13 @@ function setUserTitle(user, content){
 }
 
 
+// make a game
+var startUp = document.getElementById('startButton');
 
+startUp.addEventListener('click', function(){
+    socket.emit('makeGame');
+    console.log('made a game');
+});
 
 
 
