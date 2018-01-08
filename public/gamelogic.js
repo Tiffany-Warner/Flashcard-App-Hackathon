@@ -1,4 +1,5 @@
-console.log('script linked!');
+//console.log('script linked!');
+document.onload = hideGameDiv();
 
 // make socket connection
 var socket = io.connect();
@@ -54,10 +55,34 @@ socket.on('answer', function(data){
     // try changing the HTML of a div to see if it works...
     // need to get the user values to update the proper info
     
-    console.log('someone submitted an answer');
+    console.log(data.username + ' submitted an answer');
     
     
-    incrementProgress('user1', 10); 
+    var upperName = data.username.toUpperCase();
+    
+    var user1check = document.getElementById('name1').textContent.toUpperCase();
+    
+    var user2check = document.getElementById('name2').textContent.toUpperCase();
+    
+    switch(upperName){
+        
+        case user1check:
+            incrementProgress('user1', 20);
+            break;
+            
+        case user2check:
+            incrementProgress('user2', 20);
+            break;
+            
+        default:
+            //do nothing
+            break;
+        
+        
+    }
+    
+    
+    //incrementProgress('user1', 10); 
     
     
     
@@ -73,6 +98,19 @@ socket.on('skip', function(data){
     
 
 });
+
+
+function hideGameDiv(){
+    
+    var gameBox = document.getElementById('gameDiv');
+    
+    gameBox.style.display = 'none';
+    
+    
+}
+
+
+
 
 
 // OTHER SOCKET EVENTS (USER FUNCTIONALITY)
@@ -134,7 +172,7 @@ socket.on('gameCreated', function(data){
    document.getElementById('startButton').style.display = 'none';
    
    
-   
+   startGame();
    
    
    
@@ -174,7 +212,23 @@ function createGame() {
 }
     
 
+function showGameDiv()
+{
+    document.getElementById('gameDiv').style.display = 'block';
+}
 
+function startGame() {
+    
+    //show the game divs
+    showGameDiv();
+    
+    //console.log('GAME HAS BEGUN');
+    
+    
+    
+    
+    
+}
 
 /******************************************************************
  *     Retrieve subject data from the server

@@ -189,7 +189,9 @@ io.on('connection', function(socket){
         console.log(socket.username + ' submitted an answer');
         
         //update shared area for progress bar
-        io.sockets.emit('answer');
+        io.sockets.emit('answer', {
+            username: socket.username
+        });
             
     });
 });
