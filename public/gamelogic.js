@@ -214,6 +214,7 @@ function incrementProgress(user, cardPercentage){
 
 // SEND USERNAME via ENTER KEY
 var usernameInput = document.getElementById('usernameInput');
+var username;
 
 usernameInput.addEventListener('keyup', function (e) {
     if (e.keyCode == 13) {
@@ -222,14 +223,31 @@ usernameInput.addEventListener('keyup', function (e) {
         } else {
             
             //testing
-            console.log(usernameInput.value + ' sending details via socket');
+            console.log(usernameInput.value + ' sending their details via socket');
             
             //send to socket
+            setUsername();
             
         }
     }
 });
 
+
+// Sets the client's username
+function setUsername () {
+    var username = usernameInput.value;
+
+    // If the username is valid
+    if (username) {
+      
+      //get rid of the input box
+      usernameInput.style.display = 'none';
+      
+      // Tell the server your username
+      socket.emit('add user', username);
+ 
+    }
+  }
 
 
 //function to set progress bar values

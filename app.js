@@ -68,7 +68,7 @@ app.get('/badges', (req, res) => {
 });
 
 
-const port = process.env.PORT; //cloud9 defaults to 8080 
+const port = process.env.PORT || 3000; //cloud9 defaults to 8080 
 
 const server = app.listen(port, () => {
    console.log(`Server started on port ${port}`); //es6 styling 
