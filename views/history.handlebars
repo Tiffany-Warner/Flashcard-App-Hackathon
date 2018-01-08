@@ -16,14 +16,22 @@
 </nav>
 
 <div class="container">
+    
+    <!-- TESTING AREA -->
+    
+<div id="controller-panel" class="bg-light" style="height: 40px;">
+    <input id="usernameInput" type="text" placeholder="Enter name..." maxlength="20"></input>
+    <button type="button" class="btn btn-primary" id="startButton">Start Game</button>
+</div>
+    
 <div class="jumbotron bg-light" style="padding-top: 10px;">
-    <h4 class="text-center">Match Up: <strong>{{user1}}</strong> vs <strong>{{user2}}</strong></h3>
+    <h4 class="text-center">Match Up: <strong id="name1">{{user1}}</strong> vs <strong id="name2">{{user2}}</strong></h3>
      <h5>Progress</h5>
      <!-- shared box for Progress -->
     <div class="card-block col-md-6 offset-md-3" id="sharedWindow" style="padding-bottom: 10px;">
         
         <!-- USER 1 -->
-        <p><strong>{{user1}}</strong></p>
+        <p id="progTitle1"><strong>{{user1}}</strong></p>
         <div class="progress">
             <div id="progressBar1" class="progress-bar bg-success" 
                 role="progressbar" aria-valuenow="0" 
@@ -33,7 +41,7 @@
         </div>
         
         <!-- USER 2 -->
-        <p><strong>{{user2}}</strong></p> 
+        <p id="progTitle2"><strong>{{user2}}</strong></p> 
         
         <div class="progress">
             <div id="progressBar2" class="progress-bar bg-primary" 
@@ -46,7 +54,7 @@
     </div>
      <!-- individual box for card display and responses -->
     
-    <div class="container text-center bg-faded">
+    <div id="gameDiv" class="container text-center bg-faded">
         <p><strong>Subject: <span id="subject"></span></strong></p>
           <div id="card-holder" class="card-body">
              <p id="question"></p>
@@ -66,7 +74,6 @@
 
  
 </div>
-
 <script src='/public/gamelogic.js'></script>
 <script>
     

@@ -1,3 +1,6 @@
+//cool socket example: https://github.com/Frankenmint/mmserver/
+
+
 //console.log('script linked!');
 document.onload = hideGameDiv();
 
@@ -299,11 +302,13 @@ function checkAnswer(entry){
     if(entry.value.toUpperCase() == cardDeck[currentCard].answer.toUpperCase()){
        
        showFeedback(true, cardDeck[currentCard].answer);
+       
 
     }
     else{
         
         showFeedback(false, cardDeck[currentCard].answer);
+        
         
     }
        
