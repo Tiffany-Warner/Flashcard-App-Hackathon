@@ -1,0 +1,141 @@
+<link rel="stylesheet" type="text/css" href="../public/selectors.css">
+<style>
+    
+form{
+    margin: 20px;
+}
+
+/*Most of this code was taken from https://bootsnipp.com/snippets/featured/onvenient-buttons
+
+.btn-style{
+    height: 100px;
+    font-size: 2em;
+    border-bottom: 4px solid #CCCCCC;
+    margin: 0;
+    outline: 0;
+    -webkit-box-shadow: 0 5px 5px -6px rgba(0,0,0,.3);
+       -moz-box-shadow: 0 5px 5px -6px rgba(0,0,0,.3);
+            box-shadow: 0 5px 5px -6px rgba(0,0,0,.3);
+}
+
+.btn-danger {
+    background-color: #d73814;
+    border-color: #be0000;
+    text-shadow: 1px 1px 0 #ac2925;
+}
+.btn-magick{
+    color: #fff;
+    background-color: #bb39d7;
+    border-color: #9a00cd;
+    text-shadow: 1px 1px 0 #9823d5;
+}
+
+.btn-magick:hover, .btn-magick:focus {
+    color: #fff;
+    background-color: #b13acd;
+    border-color: #8600b9;
+}
+
+.btn-success {
+    background-color: #80d752;
+    border-color: #61be26;
+    text-shadow: 1px 1px 0 #5fdb34;
+}
+
+.btn-success:hover, .btn-success:focus {
+    background-color: #75cd53;
+    border-color: #53aa27;
+}
+.btn-primary {
+    background-color: #4274d7;
+    border-color: #4d5bbe;
+    text-shadow: 1px 1px 0 #232bd5;
+}
+.btn-pressure {
+    position: relative;
+    margin-bottom: 0;
+}
+.btn-pressure:focus {
+    -moz-outline-style:none;
+         outline:medium none;
+}
+.btn-pressure:active, .btn-pressure.active {
+    top: 4px;
+    border: 0;
+    position: relative;
+}
+.header{
+    margin-top: 50px;
+}
+
+*/
+
+
+/*From animate.css*/
+/*https://github.com/daneden/animate.css*/
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, .95, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.rubberBand{
+    text-align: center;
+    animation-name: rubberBand;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+</style>
+<div class="container header">
+    <h1 class="text-center rubberBand">Choose your flashcard set:</h1>
+
+<div class="container bg-faded" >
+    
+    <center>
+        <form action="/biology" method="GET">
+            <button class="btn-style btn-pressure btn btn-magick btn-block" type="submit" id="biology">Biology</button>
+        </form>
+        <form action="/physics" method="GET">
+            <button class="btn-style btn-pressure btn btn-success btn-block" type="submit" id="physics">Physics</button>
+        </form>
+      <form action="/history" method="GET">
+            <button class="btn-style btn-pressure btn btn-danger btn-block" type="submit" id="history">History</button>
+      </form>
+        <form action="/computerScience" method="GET">
+            <button class="btn-style btn-pressure btn btn-primary btn-block" type="submit" id="cs">Computer Science</button>
+        </form>
+    </center>
+        
+</div>
+
+ 
+</div> 
+ 
+<script>
+</script>
+
