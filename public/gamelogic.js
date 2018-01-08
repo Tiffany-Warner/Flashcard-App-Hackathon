@@ -89,6 +89,10 @@ socket.on('user joined', function (data) {
         
         setUserTitle('name2', data.username);
         
+        //start game button appears after both users in
+        setTimeout(function(){startUp.style.display = 'block';}, 2000)
+        
+        
     } else { //users is at 3+
         
         alert('Two users have already joined.');
@@ -147,6 +151,10 @@ function setUserTitle(user, content){
 
 // make a game
 var startUp = document.getElementById('startButton');
+
+//hide start button
+startUp.style.display = 'none';
+
 
 startUp.addEventListener('click', function(){
     socket.emit('makeGame');
@@ -289,6 +297,7 @@ function incrementProgress(user, cardPercentage){
 
 
 
+
 // SEND USERNAME via ENTER KEY
 var usernameInput = document.getElementById('usernameInput');
 var username;
@@ -304,6 +313,7 @@ usernameInput.addEventListener('keyup', function (e) {
             
             //send to socket
             setUsername();
+            
             
         }
     }

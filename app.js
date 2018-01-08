@@ -274,237 +274,237 @@ app.post('game', function(req,res){
  
 //Creates Cards - If you run them more than once, you will get duplicates
 
-//  BiologyDeck.create(
-//      {
-//          subject: "Biology",
-//          question: "What process does the following describe: A passive movement of water molecules through a semi permeable membrane. Water moves from an area of low solute concentration to high solute concentration.",
-//          answer: "Osmosis",
-//          image: "https://images.unsplash.com/photo-1485939420171-378de92ecd4c?auto=format&fit=crop&w=1050&q=80",
-//          unique: true
+ BiologyDeck.create(
+     {
+         subject: "Biology",
+         question: "What process does the following describe: A passive movement of water molecules through a semi permeable membrane. Water moves from an area of low solute concentration to high solute concentration.",
+         answer: "Osmosis",
+         image: "https://images.unsplash.com/photo-1485939420171-378de92ecd4c?auto=format&fit=crop&w=1050&q=80",
+         unique: true
          
-//      }, function(err, biologycard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(biologycard);
-//          }
-//      });
+     }, function(err, biologycard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(biologycard);
+         }
+     });
      
 
 
 
-//  BiologyDeck.create(
-//      {
-//          subject: "Biology",
-//          question: "What kind of solution has a higher concentration of solutes outside cell than inside?",
-//          answer: "Hypertonic",
-//          image: "https://images.unsplash.com/photo-1485939420171-378de92ecd4c?auto=format&fit=crop&w=1050&q=80",
-//          unique: true
+ BiologyDeck.create(
+     {
+         subject: "Biology",
+         question: "What kind of solution has a higher concentration of solutes outside cell than inside?",
+         answer: "Hypertonic",
+         image: "https://images.unsplash.com/photo-1485939420171-378de92ecd4c?auto=format&fit=crop&w=1050&q=80",
+         unique: true
          
-//      }, function(err, biologycard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(biologycard);
-//          }
-//      });
+     }, function(err, biologycard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(biologycard);
+         }
+     });
 
-//  BiologyDeck.create(
-//      {
-//          subject: "Biology",
-//          question: "When two solutions separated by a membrane contains the same concentration of solutes on either side, it is called?",
-//          answer: "Isotonic",
-//          image: "https://images.unsplash.com/photo-1485939420171-378de92ecd4c?auto=format&fit=crop&w=1050&q=80",
-//          unique: true
+ BiologyDeck.create(
+     {
+         subject: "Biology",
+         question: "When two solutions separated by a membrane contains the same concentration of solutes on either side, it is called?",
+         answer: "Isotonic",
+         image: "https://images.unsplash.com/photo-1485939420171-378de92ecd4c?auto=format&fit=crop&w=1050&q=80",
+         unique: true
          
-//      }, function(err, biologycard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(biologycard);
-//          }
-//      });
+     }, function(err, biologycard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(biologycard);
+         }
+     });
 
-//  BiologyDeck.create(
-//      {
-//          subject: "Biology",
-//          question: "What is the flexible boundary made of phospholipids between the living cell and its surroundings called?",
-//          answer: "Plasma Membrane",
-//          image: "https://images.unsplash.com/photo-1485939420171-378de92ecd4c?auto=format&fit=crop&w=1050&q=80",
-//          unique: true
+ BiologyDeck.create(
+     {
+         subject: "Biology",
+         question: "What is the flexible boundary made of phospholipids between the living cell and its surroundings called?",
+         answer: "Plasma Membrane",
+         image: "https://images.unsplash.com/photo-1485939420171-378de92ecd4c?auto=format&fit=crop&w=1050&q=80",
+         unique: true
          
-//      }, function(err, biologycard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(biologycard);
-//          }
-//      });
+     }, function(err, biologycard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(biologycard);
+         }
+     });
 
-//  PhysicsDeck.create(
-//      {
-//          subject: "Physics",
-//          question: "What is the energy used to push or pull an object called?",
-//          answer: "Force",
-//          unique: true
+ PhysicsDeck.create(
+     {
+         subject: "Physics",
+         question: "What is the energy used to push or pull an object called?",
+         answer: "Force",
+         unique: true
          
-//      }, function(err, physicscard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(physicscard);
-//          }
-//      });
+     }, function(err, physicscard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(physicscard);
+         }
+     });
      
      
-//  PhysicsDeck.create(
-//      {
-//          subject: "Physics",
-//          question: "What is the unit of measurement of force",
-//          answer: "Newton",
-//          unique: true
+ PhysicsDeck.create(
+     {
+         subject: "Physics",
+         question: "What is the unit of measurement of force",
+         answer: "Newton",
+         unique: true
          
-//      }, function(err, physicscard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(physicscard);
-//          }
-//      });
+     }, function(err, physicscard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(physicscard);
+         }
+     });
 
-//  PhysicsDeck.create(
-//      {
-//          subject: "Physics",
-//          question: "What is the amount of matter in an object called?",
-//          answer: "Mass",
-//          unique: true
+ PhysicsDeck.create(
+     {
+         subject: "Physics",
+         question: "What is the amount of matter in an object called?",
+         answer: "Mass",
+         unique: true
          
-//      }, function(err, physicscard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(physicscard);
-//          }
-//      });
+     }, function(err, physicscard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(physicscard);
+         }
+     });
      
-//  PhysicsDeck.create(
-//      {
-//          subject: "Physics",
-//          question: "What is the force of gravity on an object called?",
-//          answer: "Weight",
-//          unique: true
+ PhysicsDeck.create(
+     {
+         subject: "Physics",
+         question: "What is the force of gravity on an object called?",
+         answer: "Weight",
+         unique: true
          
-//      }, function(err, physicscard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(physicscard);
-//          }
-//      });
+     }, function(err, physicscard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(physicscard);
+         }
+     });
      
-//  PhysicsDeck.create(
-//      {
-//          subject: "Physics",
-//          question: "What is the unit of measurement for work?",
-//          answer: "Joules",
-//          unique: true
+ PhysicsDeck.create(
+     {
+         subject: "Physics",
+         question: "What is the unit of measurement for work?",
+         answer: "Joules",
+         unique: true
          
-//      }, function(err, physicscard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(physicscard);
-//          }
-//      });
+     }, function(err, physicscard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(physicscard);
+         }
+     });
 
-//  HistoryDeck.create(
-//      {
-//          subject: "History",
-//          question: "What is the constitutional amendment ratified after the Civil War that forbade slavery and involuntary servitude?",
-//          answer: "Thirteenth Amendment",
-//          unique: true
+ HistoryDeck.create(
+     {
+         subject: "History",
+         question: "What is the constitutional amendment ratified after the Civil War that forbade slavery and involuntary servitude?",
+         answer: "Thirteenth Amendment",
+         unique: true
          
-//      }, function(err, historycard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(historycard);
-//          }
-//     });
+     }, function(err, historycard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(historycard);
+         }
+    });
 
-//  HistoryDeck.create(
-//      {
-//          subject: "History",
-//          question: "What act passed in 1862 provided free land in the west as long as the person would settle there and make improvements in five years?",
-//          answer: "Homestead Act",
-//          unique: true
+ HistoryDeck.create(
+     {
+         subject: "History",
+         question: "What act passed in 1862 provided free land in the west as long as the person would settle there and make improvements in five years?",
+         answer: "Homestead Act",
+         unique: true
          
-//      }, function(err, historycard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(historycard);
-//          }
-//     });
+     }, function(err, historycard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(historycard);
+         }
+    });
 
-//  HistoryDeck.create(
-//      {
-//          subject: "History",
-//          question: "What is the constitutional amendment ratified after the Civil War that forbade slavery and involuntary servitude?",
-//          answer: "Thirteenth Amendment",
-//          unique: true
+ HistoryDeck.create(
+     {
+         subject: "History",
+         question: "What is the constitutional amendment ratified after the Civil War that forbade slavery and involuntary servitude?",
+         answer: "Thirteenth Amendment",
+         unique: true
          
-//      }, function(err, historycard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(historycard);
-//          }
-//     });
+     }, function(err, historycard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(historycard);
+         }
+    });
 
-//  HistoryDeck.create(
-//      {
-//          subject: "History",
-//          question: "What was the belief that the United States was destined to stretch across the continent from the Atlantic Ocean to the Pacific Ocean called?",
-//          answer: "Manifest Destiny",
-//          unique: true
+ HistoryDeck.create(
+     {
+         subject: "History",
+         question: "What was the belief that the United States was destined to stretch across the continent from the Atlantic Ocean to the Pacific Ocean called?",
+         answer: "Manifest Destiny",
+         unique: true
          
-//      }, function(err, historycard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(historycard);
-//          }
-//     });
+     }, function(err, historycard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(historycard);
+         }
+    });
     
-//  HistoryDeck.create(
-//      {
-//          subject: "History",
-//          question: "Who was the U.S. president after Lincoln who was almost impeached?",
-//          answer: "Andrew Johnson",
-//          unique: true
+ HistoryDeck.create(
+     {
+         subject: "History",
+         question: "Who was the U.S. president after Lincoln who was almost impeached?",
+         answer: "Andrew Johnson",
+         unique: true
          
-//      }, function(err, historycard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(historycard);
-//          }
-//     });
+     }, function(err, historycard){
+         if(err){
+             console.log(err);
+         } else {
+             console.log("Successful");
+             console.log(historycard);
+         }
+    });
 
 
 
