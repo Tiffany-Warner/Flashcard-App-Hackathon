@@ -32,7 +32,7 @@ submit.addEventListener('click', function(){
    
    checkAnswer(entry);
    
-   console.log('"ENTER" BUTTON CLICKED!');
+   //console.log('"ENTER" BUTTON CLICKED!');
 });
 
 skip.addEventListener('click', function(){
@@ -41,7 +41,7 @@ skip.addEventListener('click', function(){
        //word: submit.value
    }) 
    
-   console.log('"SKIP" BUTTON CLICKED!');
+   //console.log('"SKIP" BUTTON CLICKED!');
    
    //from tiffany's script
    skipCard();
@@ -54,10 +54,8 @@ socket.on('answer', function(data){
     // try changing the HTML of a div to see if it works...
     // need to get the user values to update the proper info
     
-    console.log('someone submitted an answer!!!!!');
+    console.log('someone submitted an answer');
     
-    //testing user1 progress bar functionality
-    //increment progress value for each answer
     
     incrementProgress('user1', 10); 
     
@@ -76,9 +74,72 @@ socket.on('skip', function(data){
 
 });
 
+
+// OTHER SOCKET EVENTS (USER FUNCTIONALITY)
+
+// Whenever the server emits 'user joined', log it in the chat body
+socket.on('user joined', function (data) {
+    
+    //check for how many users have joined
+    if (data.numUsers == 1) {
+        
+        setUserTitle('name1', data.username);
+        
+    } else if (data.numUsers == 2){
+        
+        setUserTitle('name2', data.username);
+        
+    } else { //users is at 3+
+        
+        alert('Two users have already joined.');
+        
+    }
+    
+    
+});
+
+
+// Whenever the server emits 'user left', update game area
+socket.on('user left', function (data) {
+    
+    //check for how many users have joined
+    if (data.userNumber == 1) {
+        
+        setUserTitle('name1', data.username);
+        
+    } else if (data.userNumber == 2){
+        
+        setUserTitle('name2', data.username);
+        
+    } else { //game full
+        
+        //alert('Two users have already joined. You can spectate, or reload and try again.');
+        
+    }
+    
+    
+});
+
+
+
+
+
+
+
+
 //
 //modular functions
 //
+
+function setUserTitle(user, content){
+    document.getElementById(user).innerHTML = content;
+    
+}
+
+
+
+
+
 
 /******************************************************************
  *     Retrieve subject data from the server
@@ -209,6 +270,9 @@ function incrementProgress(user, cardPercentage){
 
         
 }
+
+
+
 
 
 // SEND USERNAME via ENTER KEY

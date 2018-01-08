@@ -11,10 +11,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 const socket = require('socket.io');
 
 
-// connect to mongoose
-mongoose.connect('mongodb://localhost/card_deck')
-    .then(()=> console.log('MongoDB connected...'))
-    .catch(err => console.log(err));
+// // connect to mongoose
+// mongoose.connect('mongodb://localhost/card_deck')
+//     .then(()=> console.log('MongoDB connected...'))
+//     .catch(err => console.log(err));
     
 //mlab for heroku
 mongoose.connect("mongodb://flash:flash@ds241737.mlab.com:41737/osu-flashcards");
@@ -120,6 +120,8 @@ io.on('connection', function(socket){
 
     var addedUser = false;
     
+    var userNumber;
+    
     // when the client emits 'add user', this listens and executes
     socket.on('add user', function (username) {
         if (addedUser) return;
@@ -127,16 +129,26 @@ io.on('connection', function(socket){
         // we store the username in the socket session for this client
         console.log(username + ' added to session');
         
+        if(numUsers == 0) {
+            userNumber = 1;
+        } else if (numUsers == 1){
+            userNumber = 2;
+        } else {
+            //do nothing
+        }
+        
         socket.username = username;
         ++numUsers;
         addedUser = true;
         socket.emit('login', {
-          numUsers: numUsers
+          numUsers: numUsers,
+          userNumber: userNumber
         });
         // echo globally (all clients) that a person has connected
-        socket.broadcast.emit('user joined', {
+        io.sockets.emit('user joined', {
           username: socket.username,
-          numUsers: numUsers
+          numUsers: numUsers,
+          userNumber: userNumber
         });
     });
 
@@ -148,7 +160,7 @@ io.on('connection', function(socket){
           --numUsers;
         
           // echo globally that this client has left
-          socket.broadcast.emit('user left', {
+          io.sockets.emit('user left', {
             username: socket.username,
             numUsers: numUsers
           });
@@ -269,22 +281,7 @@ app.post('game', function(req,res){
 //          }
 //      });
      
-//  BiologyDeck.create(
-//      {
-//          subject: "Biology",
-//          question: "What process does the following describe: The passive movement of particles from an area of high concentration to low concentration. This happens along a concentration gradient",
-//          answer: "Diffusion",
-//          image: "https://images.unsplash.com/photo-1485939420171-378de92ecd4c?auto=format&fit=crop&w=1050&q=80",
-//          unique: true
-         
-//      }, function(err, biologycard){
-//          if(err){
-//              console.log(err);
-//          } else {
-//              console.log("Successful");
-//              console.log(biologycard);
-//          }
-//      });
+
 
 
 //  BiologyDeck.create(
