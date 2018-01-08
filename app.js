@@ -105,7 +105,7 @@ app.get('/computerScience', function(req,res){
 
 
 /*
-    SOCKET STUFF
+    SOCKET EVENTS
 */
 
 
@@ -125,6 +125,8 @@ io.on('connection', function(socket){
         if (addedUser) return;
     
         // we store the username in the socket session for this client
+        console.log(username + ' added to session');
+        
         socket.username = username;
         ++numUsers;
         addedUser = true;

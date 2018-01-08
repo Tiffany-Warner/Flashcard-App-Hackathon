@@ -7,7 +7,6 @@ var socket = io.connect();
 var entry = document.getElementById('wordGuess');
 var submit = document.getElementById('submitGuess');
 var skip = document.getElementById('skipGuess');
-var output = document.getElementById('test-socket');
 var prog1 = document.getElementById('progressBar1');
 var prog2 = document.getElementById('progressBar2');
 
