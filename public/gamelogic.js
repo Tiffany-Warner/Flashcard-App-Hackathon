@@ -84,13 +84,15 @@ socket.on('user joined', function (data) {
     if (data.numUsers == 1) {
         
         setUserTitle('name1', data.username);
+        setUserTitle('progTitle1', data.username);
         
     } else if (data.numUsers == 2){
         
         setUserTitle('name2', data.username);
+        setUserTitle('progTitle2', data.username);
         
         //start game button appears after both users in
-        setTimeout(function(){startUp.style.display = 'block';}, 2000)
+        startUp.style.display = 'block';
         
         
     } else { //users is at 3+
@@ -128,13 +130,16 @@ socket.on('user left', function (data) {
 // game created
 socket.on('gameCreated', function(data){
    
-   console.log('game created');
    
    document.getElementById('startButton').style.display = 'none';
    
+   
+   
+   
+   
+   
     
 });
-
 
 
 
@@ -156,10 +161,18 @@ var startUp = document.getElementById('startButton');
 startUp.style.display = 'none';
 
 
-startUp.addEventListener('click', function(){
+startUp.addEventListener('click', createGame);
+
+
+function createGame() {
     socket.emit('makeGame');
-    console.log('Game created');
-});
+    //console.log('Game created via button');
+    
+    
+    
+    
+}
+    
 
 
 

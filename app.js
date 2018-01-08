@@ -12,12 +12,12 @@ const socket = require('socket.io');
 
 
 // connect to mongoose
-mongoose.connect('mongodb://localhost/card_deck')
-    .then(()=> console.log('MongoDB connected...'))
-    .catch(err => console.log(err));
+// mongoose.connect('mongodb://localhost/card_deck')
+//     .then(()=> console.log('MongoDB connected...'))
+//     .catch(err => console.log(err));
     
 //mlab for heroku
-mongoose.connect("mongodb://flash:flash@ds241737.mlab.com:41737/osu-flashcards");
+mongoose.connect("mongodb://flash:flash@ds245347.mlab.com:45347/card_deck");
 
 
 /* load flash card model
@@ -161,7 +161,6 @@ io.on('connection', function(socket){
         gameId.playerOne = socket.username;
         gameId.open = true;
 
-
         io.sockets.emit('gameCreated', {
             username: socket.username,
             gameId: gameId
@@ -187,7 +186,7 @@ io.on('connection', function(socket){
     //get submitted response
     socket.on('answer', function(username){
         
-        console.log(socket.username + 'submitted an answer');
+        console.log(socket.username + ' submitted an answer');
         
         //update shared area for progress bar
         io.sockets.emit('answer');
