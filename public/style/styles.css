@@ -108,6 +108,7 @@ img {
     background-color: rgb(250, 137, 44);
     padding: 8px 30px;
     margin: 100px auto;
+    outline: none;
 }
 
 .signup:hover, .signup:active{
@@ -199,7 +200,7 @@ footer{
 .modal-container{
 	font-family: 'Varela Round', sans-serif;
 }
-.modal-login {		
+.modal-login {
 	color: #636363;
 	width: 350px;
 }
@@ -209,7 +210,7 @@ footer{
 	border: none;
 }
 .modal-login .modal-header {
-	border-bottom: none;   
+	border-bottom: none;
     position: relative;
     justify-content: center;
 }
@@ -223,13 +224,13 @@ footer{
 }
 .modal-login .form-control, .modal-login .btn {
 	min-height: 40px;
-	border-radius: 3px; 
+	border-radius: 3px;
 }
 .modal-login .close {
     position: absolute;
 	top: -5px;
 	right: -5px;
-}	
+}
 .modal-login .modal-footer {
 	background: #ecf0f1;
 	border-color: #dee4e7;
@@ -241,7 +242,7 @@ footer{
 }
 .modal-login .modal-footer a {
 	color: #999;
-}		
+}
 .modal-login .avatar {
 	position: absolute;
 	margin: 0 auto;
