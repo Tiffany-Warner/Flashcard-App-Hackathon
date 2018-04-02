@@ -7,7 +7,8 @@ Socket.io is used for player interactions. Once a game is started, progress bars
 has gotten correct. The first player to 100% wins the game. 
 
 ## Website
-[Flashcard Challenge](https://flashcards-osu.herokuapp.com/)
+* Most Up-to-Date Version: [Flashcard Challenge Revamped](https://flashcard-challenge.herokuapp.com/)
+* Version submitted to Hackathon: [Flashcard Challenge](https://flashcards-osu.herokuapp.com/)
 
 ## Technologies used
 
