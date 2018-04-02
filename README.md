@@ -21,7 +21,7 @@ has gotten correct. The first player to 100% wins the game.
 
 ## Team
 
-* Tiffany Warner
-* Adrian Towery
-* Cameron Church
+* [@Tiffany Warner](https://github.com/Tiffany-Warner)
+* [@Adrian Towery](https://github.com/actowery)
+* [@Cameron Church](https://github.com/CameronScottBrown)
 * Alanna Mozetta
