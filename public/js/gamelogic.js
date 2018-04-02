@@ -199,7 +199,7 @@ function setUserTitle(user, content){
 var startUp = document.getElementById('startButton');
 
 //hide start button
-startUp.style.display = 'none';
+// startUp.style.display = 'none';
 
 
 startUp.addEventListener('click', createGame);

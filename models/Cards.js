@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
 
-// import schema
-const Schema = mongoose.Schema;
-
 // create schema for flash cards
-const CardSchema = new Schema({
+const CardSchema = mongoose.Schema({
    word: {
        type: String,
        required: true
@@ -12,8 +9,9 @@ const CardSchema = new Schema({
    description: {
        type: String,
        required: true
-   }
+   },
+   image: String
 });
 
-// create 'cards' model and connect it to CardSchema
-mongoose.model('cards', CardSchema);
+//Allows access of model from outside file
+const Card = module.exports = mongoose.model('Card', CardSchema);
