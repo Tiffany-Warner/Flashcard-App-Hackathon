@@ -25,3 +25,20 @@ has gotten correct. The first player to 100% wins the game.
 * [@Adrian Towery](https://github.com/actowery)
 * [@Cameron Church](https://github.com/CameronScottBrown)
 * Alanna Mozetta
+
+
+## Known Issues 
+Currently only test demo is functional but buggy
+### Game logic bugs
+* No winner is ever declared/decided
+* Incorrect answers increment percentage
+* Users don't always match after entering name
+* When one user enters their name, the other player's "Start Game" button disappears - can still hit enter to submit name
+
+## Features to be Added
+* User login system
+* User profiles
+* Matching logged in users for a game
+* Badge system/Awards
+* Message or comment system 
+* UI improvements
