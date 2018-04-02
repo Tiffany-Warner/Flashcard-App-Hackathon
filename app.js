@@ -4,8 +4,10 @@ const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser  = require("body-parser");
 const config = require('./config/database');
-
+const favicon = require('serve-favicon');
 const app = express();
+
+app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
