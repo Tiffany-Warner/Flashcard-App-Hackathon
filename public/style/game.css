@@ -1,0 +1,8 @@
+/*Remove transparency of navbar*/
+.transparent{
+    background-color: black;
+}
+/*Push Game down*/
+.game{
+    margin-top: 8em;
+}

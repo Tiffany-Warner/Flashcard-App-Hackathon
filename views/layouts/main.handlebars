@@ -3,19 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-    <title>FlashCard Challenge</title>
+    <link rel="stylesheet" type="text/css" href="/style/styles.css"/>
+    
+	<!--Boostrap-->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/css/bootstrapValidator.css"/>
+	<!-- Bootstrap JS -->
+   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
+	<!-- Bootstrap Datepicker -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+	<!--Font Awesome-->
+	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<!--JQuery-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--Clientside JS-->
+	<script type="text/javascript" src="/js/gamelogic.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    
+    <title>{{title}}</title>
+    {{#each css}}
+        <link rel="stylesheet" href="/style/{{this}}" />
+    {{/each}}
 </head>
 <body>
-    
+
  <!-- add a navbar partial  HERE later -->
-    
-    <div class="container">
-        {{{body}}}
-    </div>
-    
+ <nav class="navbar navbar-expand-lg navbar-dark fixed-top transparent">
+   <a class="navbar-brand" href="/">Flashcard Challenge</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   <ul class="navbar-nav mr-auto">
+      {{#if game}}
+          <li class="nav-item active">
+            <a class="nav-link" href="/game">Games <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/badges">Badges</a>
+          </li>
+      {{/if}}
+   </ul>
+   <ul class="navbar-nav navbar-right mv-left">
+     <li class="nav-item">
+         <a class="nav-link" href="/demo/selector"></i>Demo Test</a>
+     </li>
+     <li class="nav-item">
+         <a class="nav-link" href=""><i class="fas fa-user-plus"></i> Sign Up</a>
+     </li>
+     <li class="nav-item">
+         <a class="nav-link" href=""><i class="fas fa-user"></i> Login</a>
+     </li>
+   </ul>
+ </nav>
+ 
+    {{{body}}}
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js" integrity="sha384-VspmFJ2uqRrKr3en+IG0cIq1Cl/v/PHneDw6SQZYgrcr8ZZmZoQ3zhuGfMnSR/F2" crossorigin="anonymous"></script>
-    
+
 </body>
 </html>

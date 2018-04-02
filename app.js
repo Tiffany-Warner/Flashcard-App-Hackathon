@@ -1,23 +1,44 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
 const mongoose = require('mongoose');
-
+const path = require('path');
 const bodyParser  = require("body-parser");
-
+const config = require('./config/database');
 
 const app = express();
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 
 const socket = require('socket.io');
 
+mongoose.connect(config.database);
 
 // connect to mongoose
 // mongoose.connect('mongodb://localhost/card_deck')
 //     .then(()=> console.log('MongoDB connected...'))
 //     .catch(err => console.log(err));
-    
+
 //mlab for heroku
-mongoose.connect("mongodb://flash:flash@ds245347.mlab.com:45347/card_deck");
+// mongoose.connect("mongodb://flash:flash@ds245347.mlab.com:45347/card_deck");
+
+let db = mongoose.connection;
+
+
+//Check connection to DB
+db.once('open', () => {
+    console.log('Connected to MongoDB');
+})
+
+
+//Check DB for errors
+db.on('error', (err) => {
+    console.log(err)
+});
+
+
+//Bring in Card Model
+let Card = require('./models/Cards.js');
 
 
 /* load flash card model
@@ -26,52 +47,52 @@ const Cards = mongoose.model('cards');
 */
 
 // express handlebars middleware
+//Reference https://stackoverflow.com/questions/16385173/node-js-express-handlebars-js-partial-views
 app.engine('handlebars', handlebars({
-    defaultLayout: 'main'   //main.handlebars
+  extname: 'handlebars',
+  defaultLayout: 'main',
+  layoutsDir: __dirname + '/views/layouts/',
+  partialsDir: __dirname + '/views/partials/'
 }));
 
 app.set('view engine', 'handlebars');
 
 
-// public folder
-app.use('/public', express.static(__dirname + '/public/'));
-
+//Set Public Folder
+app.use(express.static(__dirname + "/public"));
 
 // index route
 app.get('/', (req, res) => {
-   res.render('index');
+   res.render('index', { title: 'Flashcard Challenge'});
 });
 
-app.get('/selector', (req, res) => {
-   res.render('selector');
-});
 
 
 
 
 // game route
 app.get('/game', (req, res) => {
-   res.render('game', { //game.handlebars 
+   res.render('game', { //game.handlebars
        classroom: 'Biology', //test values
        user1: 'Billy Madison',// we need to get user details from account
        user2: 'Happy Gilmore',//
        definition: 'an organism whose cells contain a nucleus and organelles'
-   });      
+   });
 });
 
 // badges route
 app.get('/badges', (req, res) => {
-   res.render('badges', { //badges.handlebars 
+   res.render('badges', { //badges.handlebars
        username: 'Billy Madison', //test values
        count: 0
-   });      
+   });
 });
 
 
-const port = process.env.PORT || 3000; //cloud9 defaults to 8080 
+const port = process.env.PORT || 3000; //cloud9 defaults to 8080
 
 const server = app.listen(port, () => {
-   console.log(`Server started on port ${port}`); //es6 styling 
+   console.log(`Server started on port ${port}`); //es6 styling
 });
 
 /*******************************************************************************
@@ -79,28 +100,32 @@ const server = app.listen(port, () => {
 *******************************************************************************/
 // selector route
 app.get('/selector', (req, res) => {
-   res.render('selector');      
+   res.render('selector', { title: 'Flashcard Decks', css: ['selector.css']});
+});
+
+app.get('/demo/selector', (req, res) =>{
+       res.render('selector', { title: 'Demo', demo: true, css: ['selector.css'] });
 });
 
 app.get('/biology', function(req,res){
     console.log("Request for biology recieved");
     //res.render('game', {subject: 'biology'});
-    res.render('biology');
+    res.render('biology', { title: 'Biology Deck', game: true, css: ['game.css'] });
 });
 
 app.get('/physics', function(req,res){
     //res.render('game', {subject: 'physics'});
-    res.render('physics');
+    res.render('physics',  { title: 'Physics Deck', game: true, css: ['game.css'] });
 });
 
 app.get('/history', function(req,res){
     //res.render('game', {subject: 'history'});
-    res.render('history');
+    res.render('history',  { title: 'American History Deck', game: true, css: ['game.css'] });
 });
 
 app.get('/computerScience', function(req,res){
     //res.render('game', {subject: 'computerScience'});
-    res.render('cs');
+    res.render('cs',  { title: 'Computer Science', game: true, css: ['game.css'] });
 });
 
 
@@ -119,16 +144,16 @@ io.on('connection', function(socket){
     console.log('socket created at port', socket.id);
 
     var addedUser = false;
-    
+
     var userNumber;
-    
+
     // when the client emits 'add user', this listens and executes
     socket.on('add user', function (username) {
         if (addedUser) return;
-    
+
         // we store the username in the socket session for this client
         console.log(username + ' added to session');
-        
+
         if(numUsers == 0) {
             userNumber = 1;
         } else if (numUsers == 1){
@@ -136,7 +161,7 @@ io.on('connection', function(socket){
         } else {
             //do nothing
         }
-        
+
         socket.username = username;
         ++numUsers;
         addedUser = true;
@@ -152,7 +177,7 @@ io.on('connection', function(socket){
         });
     });
 
-  
+
     //when the client  requests to make a Game
     socket.on('makeGame', function () {
 
@@ -165,15 +190,15 @@ io.on('connection', function(socket){
             username: socket.username,
             gameId: gameId
         });
-    
+
     });
-    
-    
+
+
     // when the user disconnects.. perform this
     socket.on('disconnect', function () {
         if (addedUser) {
             --numUsers;
-            
+
             // echo globally that this client has left
             io.sockets.emit('user left', {
                 username: socket.username,
@@ -181,18 +206,18 @@ io.on('connection', function(socket){
             });
         }
     });
-    
-    
+
+
     //get submitted response
     socket.on('answer', function(username){
-        
+
         console.log(socket.username + ' submitted an answer');
-        
+
         //update shared area for progress bar
         io.sockets.emit('answer', {
             username: socket.username
         });
-            
+
     });
 });
 
@@ -254,7 +279,7 @@ app.post('game', function(req,res){
     var correctAnswers = req.body.numCorrect;
     var winner = req.body.isWinner;
     var master = req.body.is100percent;
-    
+
     //Add info to user db
 });
 
@@ -267,12 +292,12 @@ app.post('game', function(req,res){
      answer: String,
      image: String
  });
- 
+
  var BiologyDeck = mongoose.model("BiologyDeck", cardDeckSchema);
  var PhysicsDeck = mongoose.model("PhysicsDeck", cardDeckSchema);
  var HistoryDeck = mongoose.model("HistoryDeck", cardDeckSchema);
  var CSDeck = mongoose.model("CSDeck", cardDeckSchema);
- 
+
 //Creates Cards - If you run them more than once, you will get duplicates
 
  BiologyDeck.create(
@@ -282,7 +307,7 @@ app.post('game', function(req,res){
          answer: "Osmosis",
          image: "https://images.unsplash.com/photo-1485939420171-378de92ecd4c?auto=format&fit=crop&w=1050&q=80",
          unique: true
-         
+
      }, function(err, biologycard){
          if(err){
              console.log(err);
@@ -291,7 +316,7 @@ app.post('game', function(req,res){
              console.log(biologycard);
          }
      });
-     
+
 
 
 
@@ -302,7 +327,7 @@ app.post('game', function(req,res){
          answer: "Hypertonic",
          image: "https://images.unsplash.com/photo-1485939420171-378de92ecd4c?auto=format&fit=crop&w=1050&q=80",
          unique: true
-         
+
      }, function(err, biologycard){
          if(err){
              console.log(err);
@@ -319,7 +344,7 @@ app.post('game', function(req,res){
          answer: "Isotonic",
          image: "https://images.unsplash.com/photo-1485939420171-378de92ecd4c?auto=format&fit=crop&w=1050&q=80",
          unique: true
-         
+
      }, function(err, biologycard){
          if(err){
              console.log(err);
@@ -336,7 +361,7 @@ app.post('game', function(req,res){
          answer: "Plasma Membrane",
          image: "https://images.unsplash.com/photo-1485939420171-378de92ecd4c?auto=format&fit=crop&w=1050&q=80",
          unique: true
-         
+
      }, function(err, biologycard){
          if(err){
              console.log(err);
@@ -352,7 +377,7 @@ app.post('game', function(req,res){
          question: "What is the energy used to push or pull an object called?",
          answer: "Force",
          unique: true
-         
+
      }, function(err, physicscard){
          if(err){
              console.log(err);
@@ -361,15 +386,15 @@ app.post('game', function(req,res){
              console.log(physicscard);
          }
      });
-     
-     
+
+
  PhysicsDeck.create(
      {
          subject: "Physics",
          question: "What is the unit of measurement of force",
          answer: "Newton",
          unique: true
-         
+
      }, function(err, physicscard){
          if(err){
              console.log(err);
@@ -385,7 +410,7 @@ app.post('game', function(req,res){
          question: "What is the amount of matter in an object called?",
          answer: "Mass",
          unique: true
-         
+
      }, function(err, physicscard){
          if(err){
              console.log(err);
@@ -394,14 +419,14 @@ app.post('game', function(req,res){
              console.log(physicscard);
          }
      });
-     
+
  PhysicsDeck.create(
      {
          subject: "Physics",
          question: "What is the force of gravity on an object called?",
          answer: "Weight",
          unique: true
-         
+
      }, function(err, physicscard){
          if(err){
              console.log(err);
@@ -410,14 +435,14 @@ app.post('game', function(req,res){
              console.log(physicscard);
          }
      });
-     
+
  PhysicsDeck.create(
      {
          subject: "Physics",
          question: "What is the unit of measurement for work?",
          answer: "Joules",
          unique: true
-         
+
      }, function(err, physicscard){
          if(err){
              console.log(err);
@@ -433,7 +458,7 @@ app.post('game', function(req,res){
          question: "What is the constitutional amendment ratified after the Civil War that forbade slavery and involuntary servitude?",
          answer: "Thirteenth Amendment",
          unique: true
-         
+
      }, function(err, historycard){
          if(err){
              console.log(err);
@@ -449,7 +474,7 @@ app.post('game', function(req,res){
          question: "What act passed in 1862 provided free land in the west as long as the person would settle there and make improvements in five years?",
          answer: "Homestead Act",
          unique: true
-         
+
      }, function(err, historycard){
          if(err){
              console.log(err);
@@ -465,7 +490,7 @@ app.post('game', function(req,res){
          question: "What is the constitutional amendment ratified after the Civil War that forbade slavery and involuntary servitude?",
          answer: "Thirteenth Amendment",
          unique: true
-         
+
      }, function(err, historycard){
          if(err){
              console.log(err);
@@ -481,7 +506,7 @@ app.post('game', function(req,res){
          question: "What was the belief that the United States was destined to stretch across the continent from the Atlantic Ocean to the Pacific Ocean called?",
          answer: "Manifest Destiny",
          unique: true
-         
+
      }, function(err, historycard){
          if(err){
              console.log(err);
@@ -490,14 +515,14 @@ app.post('game', function(req,res){
              console.log(historycard);
          }
     });
-    
+
  HistoryDeck.create(
      {
          subject: "History",
          question: "Who was the U.S. president after Lincoln who was almost impeached?",
          answer: "Andrew Johnson",
          unique: true
-         
+
      }, function(err, historycard){
          if(err){
              console.log(err);
@@ -517,7 +542,7 @@ app.post('game', function(req,res){
          question: "What is a type of object used to store groups of similar elements called?",
          answer: "Array",
          unique: true
-         
+
      }, function(err, cscard){
          if(err){
              console.log(err);
@@ -533,7 +558,7 @@ app.post('game', function(req,res){
          question: "What is a finite set of well-defined instructions for accomplishing a task - a Recipe.",
          answer: "Algorithm",
          unique: true
-         
+
      }, function(err, cscard){
          if(err){
              console.log(err);
@@ -549,7 +574,7 @@ app.post('game', function(req,res){
          question: "What is the data type used to represent a single true or false value",
          answer: "Boolean",
          unique: true
-         
+
      }, function(err, cscard){
          if(err){
              console.log(err);
@@ -565,7 +590,7 @@ app.post('game', function(req,res){
          question: "What is Javascript?",
          answer: "Programming Language",
          unique: true
-         
+
      }, function(err, cscard){
          if(err){
              console.log(err);
@@ -582,7 +607,7 @@ app.post('game', function(req,res){
          question: "What does HTML stand for?",
          answer: "Hypertext Markup Language",
          unique: true
-         
+
      }, function(err, cscard){
          if(err){
              console.log(err);

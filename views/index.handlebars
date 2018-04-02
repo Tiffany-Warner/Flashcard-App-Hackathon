@@ -1,8 +1,78 @@
-<div class="jumbotron text-center bg-primary">
-    <h1 class="display-3">FlashCard Challenge</h1>
-    <p id="appDescription">Do you know your vocab better than your classmates?
-    <br> Enter now to find out!
-    </p>
-    <a href="/selector" class="btn btn-success btn-lg">Enter</a>
+<div class ="main">
+  <div class="container">
+      <div class="col-md-12 col-sm-12 header-text">
+        <h1 class="heading">How much do you really know?</h3>
+        <h1 class="heading2"><span class="name">Flashcard Challenge </span></h1>
+        <div class="container">
+          <div class="row buttons">
+            <div class="col-sm-12 col-md-3">
+              <a href="#myModal" class="signup trigger-btn" data-toggle="modal">Play Now</a>
+            </div>
+            <div class="col-sm-12 col-md-3 demo">
+              <a href="/demo/selector" class="signup demo">Try Demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-container">
+      <div class="text"></div>
+    </div>
+  </div>
+</div>
+<section id="introduction" class="introduction">
+    <div class="container">
+        <div class="row">
+            <div class="main_introduction sections">
+                <div class="head_title text-center">
+                    <h2>What is Flashcard Challenge?</h2>
+                    <div class="separator"></div>
+                    <p><em>A fun way to learn with a competitive edge</em></p>
+                    <p>Flashcard Challenge helps students build great study habits by making studying fun! Just sign in, challenge a friend 
+                    to a round of flashcards and find out if you know as much as you think you do.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
+<!-- Modal HTML -->
+<div class="modal-container">
+  <div id="myModal" class="modal fade">
+  	<div class="modal-dialog modal-login">
+  		<div class="modal-content">
+  			<div class="modal-header">
+  				<div class="avatar">
+  					<i class="fas fa-user fa-3x icon"></i>
+  				</div>				
+  				<h4 class="modal-title">Member Login</h4>	
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  			</div>
+  			<div class="modal-body">
+  				<form action="/examples/actions/confirmation.php" method="post">
+  					<div class="form-group">
+  						<input type="text" class="form-control" name="username" placeholder="Username" required="required">		
+  					</div>
+  					<div class="form-group">
+  						<input type="password" class="form-control" name="password" placeholder="Password" required="required">	
+  					</div>        
+  					<div class="form-group">
+  						<button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+  					</div>
+  					<div class="text-center createAccount">
+  					  Don't have an account?
+  					</div>
+  					 <div class=" text-center createAccount">
+  						<a href="#" class="signup">Create Account</a>
+  					</div>
+  				</form>
+  			</div>
+  			<div class="modal-footer">
+  				<a href="#">Forgot Password?</a>
+  			</div>
+  		</div>
+  	</div>
+  </div> 
+</div>
+{{> footer}}
+<script src="js/animatedtext.js"></script>

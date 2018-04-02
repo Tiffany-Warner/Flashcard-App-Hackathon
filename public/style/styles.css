@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:100');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Luckiest+Guy|Nanum+Pen+Script');
+/********************************************************************
+*                           General Styles
+********************************************************************/
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.8em;
+    color: #333;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/********************************************************************
+*                           Navbar Customizations
+********************************************************************/
+.navbar-brand{
+    font-family:'Luckiest Guy', cursive;
+    letter-spacing: 2px;
+}
+.navbar .navbar-nav > li > a {
+    font-family: 'Nanum Pen Script', cursive;
+    color: white;
+    font-size: 25px;
+    padding: 0;
+}
+.navbar .navbar-nav > li{
+    padding: 0 20px;
+}
+.transparent{
+    background-color: rgba(0,0,0,0.3);
+    font-size: 1.2em;
+}
+.mv-left{
+    padding-right: 50px;
+}
+/********************************************************************
+*                        Home page
+********************************************************************/
+.main {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    font-family: 'Nanum Pen Script', cursive;
+    background-image: url('/imgs/flashcard-challenge.jpg');
+    background-attachment: fixed;
+    /*Parallax effect*/
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100%;
+}
+.header-text {
+    font-size: 40px;
+    padding-top: 10rem;
+}
+
+.heading {
+    text-shadow: 8px 8px 8px rgb(12, 12, 12);
+    font-size: 2.5em;
+}
+
+.heading2{
+    padding: 0.7em 0;
+    text-shadow: 8px 8px 8px rgb(12, 12, 12);
+    font-size: 1.1em;
+}
+
+.name{
+    font-size: 1.3em;
+    font-family:'Luckiest Guy', cursive;
+    letter-spacing: 3px;
+}
+.buttons{
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.buttons div{
+    display: block;
+    font-weight: 100;
+    color: white;
+}
+.signup, .signup:visited{
+    border-radius: 30px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(250, 137, 44);
+    padding: 8px 30px;
+    margin: 100px auto;
+}
+
+.signup:hover, .signup:active{
+    text-decoration: none;
+    color: white;
+    background-color:rgb(245, 116, 10);
+}
+
+@media (max-width : 768px){
+    .header-text{
+        padding-top: 8rem;
+        font-size: 20px;
+    }
+    .heading {
+        text-shadow: 8px 8px 8px rgb(12, 12, 12);
+        font-size: 2em;
+    }
+    .heading2{
+        padding-bottom: 0.2em;
+        text-shadow: 8px 8px 8px rgb(12, 12, 12);
+        font-size: 1.3em;
+    }
+    .signup{
+        font-size: 1.2em;
+    }
+    .demo{
+        display: none;
+    }
+}
+
+/********************************************************************
+*                        Scrambled Text
+* This code was taken from codepen which can be found below
+* Reference: https://codepen.io/soulwire/pen/mErPAK
+********************************************************************/
+.text-container {
+  font-family: 'Roboto Mono', monospace;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.text {
+    bottom: 1em;
+    display: block;
+    height: 50px;
+    position: absolute;
+    font-weight: 100;
+    font-size: 40px;
+    color: white;
+}
+.dud {
+  color: #757575;
+}
+
+/********************************************************************
+*                      Information section
+********************************************************************/
+.sections {
+    padding-top:120px;
+    padding-bottom: 120px;
+    overflow: hidden;
+    font-size: 18px;
+}
+
+.separator {
+    height: 2px;
+    width: 85px;
+    margin: 70px auto;
+    background-color: #222222;
+}
+
+footer{
+    text-align: center;
+    font-size: 15px;
+    background-color: rgb(250, 137, 44);
+    margin: 0;
+    padding: 5px 0;
+}
+
+
+/********************************************************************
+*                      Modal styles for Login
+** Reference: https://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=elegant-modal-login-form-with-avatar-icon
+********************************************************************/
+.modal-container{
+	font-family: 'Varela Round', sans-serif;
+}
+.modal-login {		
+	color: #636363;
+	width: 350px;
+}
+.modal-login .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+}
+.modal-login .modal-header {
+	border-bottom: none;   
+    position: relative;
+    justify-content: center;
+}
+.modal-login h4 {
+	text-align: center;
+	font-size: 26px;
+	margin: 30px 0 -15px;
+}
+.modal-login .form-control:focus {
+	border-color: #70c5c0;
+}
+.modal-login .form-control, .modal-login .btn {
+	min-height: 40px;
+	border-radius: 3px; 
+}
+.modal-login .close {
+    position: absolute;
+	top: -5px;
+	right: -5px;
+}	
+.modal-login .modal-footer {
+	background: #ecf0f1;
+	border-color: #dee4e7;
+	text-align: center;
+    justify-content: center;
+	margin: 0 -20px -20px;
+	border-radius: 5px;
+	font-size: 13px;
+}
+.modal-login .modal-footer a {
+	color: #999;
+}		
+.modal-login .avatar {
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	top: -70px;
+	width: 95px;
+	height: 95px;
+	border-radius: 50%;
+	z-index: 9;
+	color: white;
+    background-color: rgb(250, 137, 44);
+	padding: 15px;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.avatar .icon{
+    width: 100%;
+}
+
+.modal-login.modal-dialog {
+	margin-top: 80px;
+}
+.modal-login .btn {
+    color: #fff;
+    border-radius: 4px;
+    background-color: rgb(250, 137, 44);
+	text-decoration: none;
+	transition: all 0.4s;
+    line-height: normal;
+    border: none;
+}
+.modal-login .btn:hover, .modal-login .btn:focus {
+    background-color:rgb(245, 116, 10);
+	outline: none;
+}
+.trigger-btn {
+	display: inline-block;
+	margin: 100px auto;
+}
+.createAccount{
+    padding-top: 10px;
+}
