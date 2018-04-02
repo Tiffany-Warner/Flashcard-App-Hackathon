@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 const socket = require('socket.io');
 
-mongoose.connect(config.database);
+// mongoose.connect(config.database);
 
 // connect to mongoose
 // mongoose.connect('mongodb://localhost/card_deck')
@@ -20,7 +20,7 @@ mongoose.connect(config.database);
 //     .catch(err => console.log(err));
 
 //mlab for heroku
-// mongoose.connect("mongodb://flash:flash@ds245347.mlab.com:45347/card_deck");
+mongoose.connect("mongodb://tiffles:tester@ds233218.mlab.com:33218/flashcard-challenge");
 
 let db = mongoose.connection;
 
