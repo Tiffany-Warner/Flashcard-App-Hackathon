@@ -7,7 +7,6 @@ const config = require('./config/database');
 const favicon = require('serve-favicon');
 const app = express();
 
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -62,6 +61,7 @@ app.set('view engine', 'handlebars');
 
 //Set Public Folder
 app.use(express.static(__dirname + "/public"));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 
 // index route
 app.get('/', (req, res) => {

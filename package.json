@@ -1,7 +1,7 @@
 {
-  "name": "flashcard-testing",
-  "version": "1.0.0",
-  "description": "testing out the flashcard competitive function of our app",
+  "name": "flashcard-challenge",
+  "version": "2.0.0",
+  "description": "An application that allows user to compete while learning",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
