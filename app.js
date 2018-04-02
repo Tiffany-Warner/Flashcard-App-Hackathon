@@ -7,7 +7,7 @@ const config = require('./config/database');
 const favicon = require('serve-favicon');
 const app = express();
 
-app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
